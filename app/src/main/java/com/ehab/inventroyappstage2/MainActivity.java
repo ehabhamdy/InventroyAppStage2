@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements InventroyAdapter.
             InventoryEntry.COLUMN_PRODUCT_NAME,
             InventoryEntry.COLUMN_PRICE,
             InventoryEntry.COLUMN_QUANTITY,
-            InventoryEntry.COLUMN_SUPPLIER_NAME};
+            InventoryEntry.COLUMN_SUPPLIER_NAME,
+            InventoryEntry.COLUMN_SUPPLIER_PHONE};
 
 
     @Override
