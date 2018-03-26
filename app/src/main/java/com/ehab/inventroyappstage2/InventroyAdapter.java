@@ -73,8 +73,8 @@ public class InventroyAdapter extends RecyclerView.Adapter<InventroyAdapter.Inve
             int price = mCursor.getInt(mCursor.getColumnIndex(InventoryEntry.COLUMN_PRICE));
             String supplierName = mCursor.getString(mCursor.getColumnIndex(InventoryEntry.COLUMN_SUPPLIER_NAME));
             int supplierPhone = mCursor.getInt(mCursor.getColumnIndex(InventoryEntry.COLUMN_SUPPLIER_PHONE));
-            Product d = new Product(productId, name, price, quantity, supplierName, supplierPhone, "US");
-            mClickListener.onClick(d);
+            Product product = new Product(productId, name, price, quantity, supplierName, supplierPhone, "US");
+            mClickListener.onClick(product);
         }
     }
 }

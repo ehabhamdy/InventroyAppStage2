@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import static com.ehab.inventroyappstage2.data.StoreContract.InventoryEntry.COLUMN_PRICE;
 import static com.ehab.inventroyappstage2.data.StoreContract.InventoryEntry.COLUMN_PRODUCT_NAME;
@@ -36,14 +37,23 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void saveButtonClicked(View view) {
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_PRODUCT_NAME, productNameEditText.getText().toString());
-        values.put(COLUMN_PRICE, priceEditText.getText().toString());
-        values.put(COLUMN_QUANTITY, quantityEditText.getText().toString());
-        values.put(COLUMN_SUPPLIER_NAME, supplierNameEditText.getText().toString());
-        values.put(COLUMN_SUPPLIER_PHONE, supplierPhoneEditText.getText().toString());
-        values.put(COLUMN_SUPPLIER_COUNTRY, "US");
+        String name = productNameEditText.getText().toString();
+        String price = priceEditText.getText().toString();
+        if(name != null && price != null) {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_PRODUCT_NAME, productNameEditText.getText().toString());
+            values.put(COLUMN_PRICE, priceEditText.getText().toString());
+            values.put(COLUMN_QUANTITY, quantityEditText.getText().toString());
+            values.put(COLUMN_SUPPLIER_NAME, supplierNameEditText.getText().toString());
+            values.put(COLUMN_SUPPLIER_PHONE, supplierPhoneEditText.getText().toString());
+            values.put(COLUMN_SUPPLIER_COUNTRY, "US");
 
-        Uri newUri = getContentResolver().insert(CONTENT_URI, values);
+            Uri newUri = getContentResolver().insert(CONTENT_URI, values);
+
+            Toast.makeText(this, "New record inserted", Toast.LENGTH_SHORT).show();
+            finish();
+        }else{
+            Toast.makeText(this, "Product name and price are required", Toast.LENGTH_SHORT).show();
+        }
     }
 }
